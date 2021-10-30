@@ -13,7 +13,8 @@ import articleRouter from "./routes/article.route.js"
 app.use(express.json()); 
 app.use(cors());
 // Connexion à la base données
-mongoose.connect(process.env.DATABASECLOUD,{
+const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@esps-sfax.g6gqh.mongodb.net/<dbname>?retryWrites=true&w=majority`
+mongoose.connect(mongoString,{
  useNewUrlParser: true,
  useUnifiedTopology: true
  })
