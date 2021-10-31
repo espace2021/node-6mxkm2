@@ -13,18 +13,10 @@ import articleRouter from "./routes/article.route.js"
 app.use(express.json()); 
 app.use(cors());
 
-//PROMPT
-import readline from 'readline';
-const rl = readline.createInterface({             
-  input: process.stdin,
-  output: process.stdout
-});
 
-rl.question('Quelle est la base de données ? ', (answer) => {  
-  console.log(`Base de données : ${answer} !`);
     // Connexion à la base données
 
-mongoose.connect(answer,{
+mongoose.connect(DATABASECLOUD,{
     useNewUrlParser: true,
     useUnifiedTopology: true
     })
@@ -41,8 +33,6 @@ app.use('/api/scategories', scategorieRouter);
 app.use('/api/articles', articleRouter);
 
 
-rl.close();                                     
-});
 
 app.get("/",(req,res)=>{
 res.send("formation");
